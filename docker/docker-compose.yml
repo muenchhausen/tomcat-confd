@@ -1,0 +1,6 @@
+tomcatservice:
+  build: ./tomcat
+  ports:
+    - "8081:8080"
+  volumes:
+    - /services:/services
