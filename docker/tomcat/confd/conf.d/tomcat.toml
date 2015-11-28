@@ -9,5 +9,5 @@ keys = [
 src = "tomcat-users.xml.tmpl"
 dest = "/usr/local/tomcat/conf/tomcat-users.xml"
 
-check_cmd = "/usr/local/tomcat/bin/catalina.sh stop -force && /usr/local/tomcat/bin/catalina.sh configtest"
+check_cmd = "/usr/local/tomcat/bin/catalina.sh configtest"
 reload_cmd = "/usr/local/tomcat/bin/catalina.sh stop -force && /usr/local/tomcat/bin/catalina.sh start"

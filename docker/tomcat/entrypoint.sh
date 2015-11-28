@@ -23,12 +23,13 @@ function config_fail()
 }
 
 # Loop until confd has updated the tomcat config
-n=0
+n=1
 until confd -onetime -node "$ETCD_NODE"; do
-  if [ "$n" -eq "4" ];  then config_fail; fi
+  #if [ "$n" -eq "10" ];  then config_fail; fi
   echo "[tomcat-confd] waiting for confd to refresh tomcat config files"
   n=$((n+1))
-  sleep $n
+  sleep 3
+  #sleep $n
 done
 
 echo "[tomcat-confd] Initial config created. Starting confd"

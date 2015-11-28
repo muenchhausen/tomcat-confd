@@ -9,3 +9,9 @@ propose on members [http://localhost:2379 http://localhost:4001] twice [last err
 app/database/url?quorum=false&recursive=true&sorted=true: dial tcp 127.0.0.1:4001: connection refused]) [0]
 
 -> docker container etcd: /bin/run.sh
+
+
+docker build -t docker_tomcatservice .
+
+
+docker-compose up
