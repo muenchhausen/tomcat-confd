@@ -22,6 +22,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision :docker
   config.vm.provision :docker_compose, yml: "/vagrant/docker/docker-compose.yml", run: "always"
 
-  config.vm.provision "shell", name: "configure etcd", inline: "curl -L http://127.0.0.1:2379/v2/keys/myapp/database/url -XPUT -d value='db.example.com' && curl -L http://127.0.0.1:2379/v2/keys/myapp/database/user -XPUT -d value='rob'"
+  config.vm.provision "shell", name: "configure etcd", inline: "curl -L http://127.0.0.1:2379/v2/keys/tomcat/user -XPUT -d value='tomcat' && curl -L http://127.0.0.1:2379/v2/keys/tomcat/password -XPUT -d value='tomcat' && curl -L http://127.0.0.1:2379/v2/keys/tomcat/proxyName -XPUT -d value='myProxyName'"
 
 end

@@ -36,4 +36,7 @@
   <user username="both" password="tomcat" roles="tomcat,role1"/>
   <user username="role1" password="tomcat" roles="role1"/>
 -->
+<role rolename="tomcat"/>
+<user username="{{getv "/user"}}" password="{{getv "/password"}}" roles="tomcat"/>
+  
 </tomcat-users>
