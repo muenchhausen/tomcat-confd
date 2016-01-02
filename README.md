@@ -15,3 +15,8 @@ docker build -t docker_tomcatservice .
 
 
 docker-compose up
+
+
+curl -L http://192.168.99.100:2379/v2/keys/tomcat/user -XPUT -d value='admin' && \
+curl -L http://192.168.99.100:2379/v2/keys/tomcat/password -XPUT -d value='admin' && \
+curl -L http://192.168.99.100:2379/v2/keys/tomcat/proxyName -XPUT -d value='myProxyName' 
