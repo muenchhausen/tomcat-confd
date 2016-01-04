@@ -1,21 +1,12 @@
-
 etcdservice:
-  # build: ./etcd
   image: elcolio/etcd
-  #environment:
-    # CLIENT_URLS: "http://docker_etcdservice_1:4001,http://docker_etcdservice_1:2379"
   command: -advertise-client-urls http://docker_etcdservice_1:4001 
   ports:
     - "2379:2379"
-    #- "2380:2380"
     - "4001:4001"
-    #- "7001:7001"
   expose:
     - "2379"
     - "4001"
-  #extra_hosts:
-  #  - "etcdservice:127.0.0.1"
-
 
 tomcatservice:
   build: ./tomcat

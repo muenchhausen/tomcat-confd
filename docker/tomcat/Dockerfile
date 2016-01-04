@@ -9,8 +9,6 @@ RUN wget https://github.com/kelseyhightower/confd/releases/download/v0.10.0/conf
 ADD entrypoint.sh /entrypoint.sh
 ADD confd /etc/confd
 
-#CMD ["catalina.sh", "run"]
-#ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/entrypoint.sh"]
 
 EXPOSE 8080
