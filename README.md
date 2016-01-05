@@ -29,35 +29,17 @@ Find out the IP of your VM. Open your Browser, go to Tomcat Manager e.g.
 http://192.168.xx.xx:8081/manager/
 login with Username admin and Password admin
 
-## start more tomcat instances
-```
-vagrant ssh
-sudo su -
-cd /vagrant/docker
-
-```
-
 ## some interesting code snippets
 
-manually build the tomcat Docker image within the VM :)
-```
-sudo su -
-cd /vagrant/docker/tomcat
-docker build -t docker_tomcatservice .
-
-cd /vagrant/docker
-docker-compose up
-```
-
-or manually rebuild everything within the VM
+manually rebuild everything within the VM
 ```
 sudo su -
 cd /vagrant/docker
 docker-compose stop && docker-compose rm -f && docker-compose build
-docker-compose up --force-recreate -d
+docker-compose up --force-recreate
 ```
 
-open a new bash - fill in the required etcd keys
+open another bash - fill in the required etcd keys
 
 ```
 curl -L http://localhost:2379/v2/keys/tomcat/Xmx -XPUT -d value='1024M' && \
@@ -65,7 +47,7 @@ curl -L http://localhost:2379/v2/keys/tomcat/Xms -XPUT -d value='512M' && \
 curl -L http://localhost:2379/v2/keys/tomcat/user -XPUT -d value='admin' && \
 curl -L http://localhost:2379/v2/keys/tomcat/password -XPUT -d value='admin'
 
-# by the way: The order matters: this is not working (!)
+# by the way: The order matters: this is not always working (!)
 curl -L http://localhost:2379/v2/keys/tomcat/user -XPUT -d value='admin' && \
 curl -L http://localhost:2379/v2/keys/tomcat/password -XPUT -d value='admin' && \
 curl -L http://localhost:2379/v2/keys/tomcat/Xmx -XPUT -d value='1024M' && \
@@ -76,6 +58,16 @@ curl -L http://localhost:2379/v2/keys/tomcat/Xms -XPUT -d value='512M'
 debug confd - e.g. if templates are ok
 ```
 /usr/local/bin/confd -onetime -backend etcd -node docker_etcdservice_1:4001
+```
+
+or manually build the tomcat Docker image within the VM :)
+```
+sudo su -
+cd /vagrant/docker/tomcat
+docker build -t docker_tomcatservice .
+
+cd /vagrant/docker
+docker-compose up
 ```
 
 todo:

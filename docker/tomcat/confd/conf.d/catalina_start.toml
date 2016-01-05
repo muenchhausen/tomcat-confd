@@ -9,4 +9,4 @@ src = "catalina_start.sh.tmpl"
 dest = "/usr/local/tomcat/bin/catalina_start.sh"
 mode = "0775"
 
-reload_cmd = "/usr/local/tomcat/bin/catalina.sh stop -force && /usr/local/tomcat/bin/catalina_start.sh"
+reload_cmd = "/usr/local/tomcat/bin/catalina.sh stop -force && /usr/local/tomcat/bin/catalina_start.sh start"

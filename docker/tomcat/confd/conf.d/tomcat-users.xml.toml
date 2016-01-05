@@ -2,12 +2,10 @@
 prefix = "tomcat"
 keys = [
   "user",
-  "password",
-  "Xmx",
-  "Xms"
+  "password"
 ]
 
 src = "tomcat-users.xml.tmpl"
 dest = "/usr/local/tomcat/conf/tomcat-users.xml"
 
-reload_cmd = "/usr/local/tomcat/bin/catalina.sh stop -force && /usr/local/tomcat/bin/catalina_start.sh"
+reload_cmd = "/usr/local/tomcat/bin/catalina.sh stop -force && /usr/local/tomcat/bin/catalina_start.sh start"
