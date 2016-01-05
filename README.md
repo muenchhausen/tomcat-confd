@@ -6,7 +6,7 @@ The main subject under test is [confd](https://github.com/kelseyhightower/confd)
 ## what is it doing?
 Apache Tomcat uses config files e.g. tomcat-users.xml to define access rights to the manager webapp. Here the admin user shall be configured centrally, so we can define it within etcd.
 
-Supported Tomcat configurations in etcd with the prefix tomcat:
+Supported Tomcat configurations that can be done in etcd under the prefix 'tomcat':
 - Xmx: maximum heap size
 - Xms: initial heap size
 - username: manager webapp username
