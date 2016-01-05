@@ -28,9 +28,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", name: "configure etcd", inline: "\
     wget --retry-connrefused --waitretry=1 --read-timeout=1 --timeout=1 -t 10 -qO- http://127.0.0.1:2379/v2/keys/ && \
+    curl -L http://127.0.0.1:2379/v2/keys/tomcat/Xmx -XPUT -d value='1024M' && \
+    curl -L http://127.0.0.1:2379/v2/keys/tomcat/Xms -XPUT -d value='512M' && \
     curl -L http://127.0.0.1:2379/v2/keys/tomcat/user -XPUT -d value='admin' && \
-    curl -L http://127.0.0.1:2379/v2/keys/tomcat/password -XPUT -d value='admin' && \
-    curl -L http://127.0.0.1:2379/v2/keys/tomcat/proxyName -XPUT -d value='myProxyName' \
+    curl -L http://127.0.0.1:2379/v2/keys/tomcat/password -XPUT -d value='admin' \
   ", run: "always"
 
 end

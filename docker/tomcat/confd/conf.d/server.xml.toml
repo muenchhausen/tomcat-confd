@@ -1,0 +1,11 @@
+[template]
+prefix = "tomcat"
+keys = [
+  "Xmx",
+  "Xms"
+]
+src = "server.xml.tmpl"
+dest = "/usr/local/tomcat/conf/server.xml"
+
+check_cmd = "/usr/local/tomcat/bin/catalina.sh configtest"
+reload_cmd = "/usr/local/tomcat/bin/catalina.sh stop -force && /usr/local/tomcat/bin/catalina_start.sh"

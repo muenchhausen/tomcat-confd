@@ -22,6 +22,8 @@ function config_fail()
 	exit -1
 }
 
+export HOSTNAME=`hostname`
+
 # Loop until confd has updated the tomcat config
 n=1
 until confd -onetime -node "$ETCD_NODE"; do

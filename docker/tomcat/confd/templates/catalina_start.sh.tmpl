@@ -1,0 +1,4 @@
+#!/bin/sh
+
+CATALINA_OPTS="-Xms{{getv "/Xms"}} -Xmx{{getv "/Xmx"}}" /usr/local/tomcat/bin/catalina.sh start
+
