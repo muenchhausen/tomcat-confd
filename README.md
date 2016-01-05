@@ -1,5 +1,5 @@
 ## what is it?
-This is a sample running multiple [Tomcats](http://tomcat.apache.org/) and a [Apache WebServer](http://httpd.apache.org/) for load balancing using a central Configuration Service [etcd](https://github.com/coreos/etcd).
+This is a sample running multiple [Tomcats](http://tomcat.apache.org/) and (soon a [Apache WebServer](http://httpd.apache.org/) for load balancing) using a central Configuration Service [etcd](https://github.com/coreos/etcd).
 
 The main subject under test is [confd](https://github.com/kelseyhightower/confd). It is a tiny  useful tool to move distributed local configuration files to a central configuration repositories a la [etcd](https://github.com/coreos/etcd), [redis](http://redis.io), [consul](http://consul.io), [dynamodb](http://aws.amazon.com/dynamodb/), [zookeeper](https://zookeeper.apache.org).   
 
