@@ -1,43 +1,57 @@
-etcdservice:
-  image: elcolio/etcd
-  command: -advertise-client-urls http://docker_etcdservice_1:4001 
-  ports:
-    - "2379:2379"
-    - "4001:4001"
-  expose:
-    - "2379"
-    - "4001"
+version: '2'
+services:
 
-httpdservice:
-  build: ./httpd
-  hostname: httpdservice
-  ports:
-    - "80:80"
-    - "443:443"
-  expose:
-    - "80"
-    - "443"
-  links:
-    - tomcatservice1
-    - tomcatservice2
+  etcdservice:
+    image: elcolio/etcd
+    hostname: etcdservice
+    command: -advertise-client-urls http://docker_etcdservice_1:4001 
+    ports:
+      - "2379:2379"
+      - "4001:4001"
+    expose:
+      - "2379"
+      - "4001"
 
-tomcatservice1:
-  build: ./tomcat
-  hostname: tomcatservice1
-  ports:
-    - "8081:8080"
-  expose:
-    - "8081"
-  links:
-    - etcdservice
+  registratorservice:
+    image: gliderlabs/registrator
+    command: etcd://etcdservice:2379/docker-services
+    hostname: registratorservice
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+    # network_mode: "host"
+    links:
+      - etcdservice
 
-tomcatservice2:
-  build: ./tomcat
-  hostname: tomcatservice2
-  ports:
-    - "8082:8080"
-  expose:
-    - "8082"
-  links:
-    - etcdservice
+  httpdservice:
+    build: ./httpd
+    hostname: httpdservice
+    ports:
+      - "80:80"
+      - "443:443"
+    expose:
+      - "80"
+      - "443"
+    links:
+      - tomcatservice1
+      - tomcatservice2
+
+  tomcatservice1:
+    build: ./tomcat
+    hostname: tomcatservice1
+    ports:
+      - "8081:8080"
+    expose:
+      - "8081"
+    links:
+      - etcdservice
+
+  tomcatservice2:
+    build: ./tomcat
+    hostname: tomcatservice2
+    ports:
+      - "8082:8080"
+    expose:
+      - "8082"
+    links:
+      - etcdservice
 
