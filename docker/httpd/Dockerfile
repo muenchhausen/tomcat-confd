@@ -1,13 +1,19 @@
 FROM debian:jessie
 MAINTAINER derk@muenchhausen.de
 
+ENV ETCD_NODE docker_etcdservice_1:4001
+
 RUN apt-get update \
 	&& apt-get install -y \
+		wget \
 		apache2 \
 		libapache2-mod-proxy-html
 
+RUN wget https://github.com/kelseyhightower/confd/releases/download/v0.10.0/confd-0.10.0-linux-amd64 -O /usr/local/bin/confd && chmod +x /usr/local/bin/confd
 
-ADD proxy_ajp.conf /etc/apache2/mods-available/
+ADD entrypoint.sh /entrypoint.sh
+ADD confd /etc/confd
+# ADD proxy_ajp.conf /etc/apache2/mods-available/
 ADD proxy_balancer.conf /etc/apache2/mods-available/
 
 RUN ln -s /etc/apache2/mods-available/proxy.load /etc/apache2/mods-enabled/proxy.load
@@ -21,14 +27,8 @@ RUN ln -s /etc/apache2/mods-available/lbmethod_byrequests.load /etc/apache2/mods
 
 RUN sed -i -e "s/Require local/Require all granted/" /etc/apache2/mods-available/status.conf
 
-
-
-
-	
-#ADD httpd-foreground /usr/local/bin/
-
-# RUN echo "Include conf/extra/proxy.conf" | tee -a /usr/local/apache2/conf/httpd.conf
-
 EXPOSE 80 443 
 VOLUME ["/var/log"]
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND", "-e", "debug"]
+
+# CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND", "-e", "debug"]
+CMD ["/entrypoint.sh"]

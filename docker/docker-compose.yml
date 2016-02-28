@@ -18,7 +18,6 @@ services:
     hostname: registratorservice
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
-    # network_mode: "host"
     links:
       - etcdservice
 
@@ -32,6 +31,7 @@ services:
       - "80"
       - "443"
     links:
+      - etcdservice
       - tomcatservice1
       - tomcatservice2
 
