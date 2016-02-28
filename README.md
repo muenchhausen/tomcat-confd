@@ -69,3 +69,7 @@ debug confd - e.g. test if templates are ok
 ```
 /usr/local/bin/confd -onetime -backend etcd -node docker_etcdservice_1:4001
 ```
+
+## open issues
+- how and when to fill etcd with default values - or is it possible to define them wasily within confd?
+- how to handle consistent configuration changes with confd

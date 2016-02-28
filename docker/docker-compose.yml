@@ -8,6 +8,19 @@ etcdservice:
     - "2379"
     - "4001"
 
+httpdservice:
+  build: ./httpd
+  hostname: httpdservice
+  ports:
+    - "80:80"
+    - "443:443"
+  expose:
+    - "80"
+    - "443"
+  links:
+    - tomcatservice1
+    - tomcatservice2
+
 tomcatservice1:
   build: ./tomcat
   hostname: tomcatservice1
@@ -27,3 +40,4 @@ tomcatservice2:
     - "8082"
   links:
     - etcdservice
+
