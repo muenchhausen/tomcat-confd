@@ -3,9 +3,9 @@ This is a starting point for running and administrating multiple [Apache Tomcat]
 
 The main subject under test&sample is [confd](https://github.com/kelseyhightower/confd). It is a tiny  useful tool to move distributed local configuration files to a central configuration repositories. Various other configuration repositories like [etcd](https://github.com/coreos/etcd), [redis](http://redis.io), [consul](http://consul.io), [dynamodb](http://aws.amazon.com/dynamodb/), [zookeeper](https://zookeeper.apache.org) could be used instead of etcd if required.   
 
-Soon a [Apache WebServer](http://httpd.apache.org/) for load balancing will be added :)
+Here we use [Apache httpd](http://httpd.apache.org/) as a reverse proxy for load balancing. Why? It is since 1996 the most popular WebServer and it works fine :)
 
-## what is it doing?
+## what is this sample doing?
 Apache Tomcat uses config files e.g. ```tomcat-users.xml``` to define access rights to the manager webapp or ```server.xml``` to define connectors. Here the admin credentials shall be configured centrally, so we can change them within etcd.
 
 The full list of confd responsible configurations - all of them stored in etcd under the prefix 'tomcat':
