@@ -13,7 +13,6 @@ RUN wget https://github.com/kelseyhightower/confd/releases/download/v0.10.0/conf
 
 ADD entrypoint.sh /entrypoint.sh
 ADD confd /etc/confd
-# ADD proxy_ajp.conf /etc/apache2/mods-available/
 ADD proxy_balancer.conf /etc/apache2/mods-available/
 
 RUN ln -s /etc/apache2/mods-available/proxy.load /etc/apache2/mods-enabled/proxy.load

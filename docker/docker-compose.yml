@@ -12,15 +12,6 @@ services:
       - "2379"
       - "4001"
 
-  registratorservice:
-    image: gliderlabs/registrator
-    command: etcd://etcdservice:2379/docker-services
-    hostname: registratorservice
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock
-    links:
-      - etcdservice
-
   httpdservice:
     build: ./httpd
     hostname: httpdservice
@@ -52,6 +43,15 @@ services:
       - "8082:8080"
     expose:
       - "8082"
+    links:
+      - etcdservice
+
+  registratorservice:
+    image: gliderlabs/registrator
+    command: etcd://etcdservice:2379/docker-services
+    hostname: registratorservice
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
     links:
       - etcdservice
 

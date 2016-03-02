@@ -3,7 +3,7 @@
 ProxyStatus Full
 ExtendedStatus On
 
-# correct way:
+# default way:
 #ProxyPass /examples balancer://examples stickysession=JSESSIONID
 
 # test to try that the balancer works:
@@ -16,3 +16,8 @@ ProxyPass /examples balancer://examples
 {{end}}
 </Proxy>
 
+#
+#{{ range getvs "/docker-services/*" }}
+#    server {{ . }};
+#{{ end }}
+#
