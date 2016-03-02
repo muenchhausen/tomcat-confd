@@ -3,9 +3,6 @@ keys = [
 	"docker-services"
 ]
 
-#  "docker-services/docker_tomcatservice1-8080/registratorservice:docker_tomcatservice1_1:8080",
-#  "docker-services/docker_tomcatservice2-8080/registratorservice:docker_tomcatservice2_1:8080"
-
 watch = true
 src = "proxy_ajp.conf.tmpl"
 dest = "/etc/apache2/mods-available/proxy_ajp.conf"

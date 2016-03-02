@@ -16,26 +16,13 @@ set -eo pipefail
 
 echo "[tomcat-confd] booting container. ETCD: $ETCD_NODE"
 
-function config_fail()
-{
-	echo "Failed to start due to config error"
-	exit -1
-}
-
 export HOSTNAME=`hostname`
 
-
 # Loop until confd has updated the tomcat config
-n=1
 until confd -onetime -node "$ETCD_NODE"; do
-  # a running tomcat does not make sence - ToDo: find a better solution
-  /usr/local/tomcat/bin/catalina.sh stop -force &> /dev/null
-
-  #if [ "$n" -eq "10" ];  then config_fail; fi
   echo "[tomcat-confd] waiting for confd to refresh tomcat config files"
   n=$((n+1))
   sleep 3
-  #sleep $n
 done
 
 echo "[tomcat-confd] Initial config created. Starting confd"

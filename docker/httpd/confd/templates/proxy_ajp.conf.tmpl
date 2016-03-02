@@ -15,9 +15,3 @@ ProxyPass /examples balancer://examples
 	BalancerMember ajp://{{$tomHost}}:8009/examples route={{$tomHost}}
 {{end}}
 </Proxy>
-
-#
-#{{ range getvs "/docker-services/*" }}
-#    server {{ . }};
-#{{ end }}
-#
