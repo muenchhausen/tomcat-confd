@@ -39,7 +39,6 @@ vagrant ssh
 ifconfig
 ```
 
-
 ### run it directly with Docker Compose
 ```
 cd tomcat-confd/docker
@@ -61,8 +60,12 @@ login with same credentials as above
 Look to your Tomcat keys and Values:
 http://192.168.99.100:2379/v2/keys/tomcat/
 
+![Screenshot](slides/tomcat-keys.png)
+
 Look what gliderlabs/registrator added:
 http://192.168.99.100:2379/v2/keys/docker-services/
+
+![Screenshot](slides/docker-services.png)
 
 ### try Apache httpd reverse proxy in your Browser
 
@@ -73,8 +76,11 @@ Access the Tomcat default Sample over httpd:
 http://192.168.99.100/examples/servlets/servlet/SessionExample
 You will see that the session id alternates if you refresh the browser
 
-### CoreOS Meetup 2016-03-03
+![Screenshot](slides/session-example.png)
+
+### CoreOS Meetup Munich 2016-03-03
 here are the [slides](slides/Configure-a-Tomcat-cluster-with-confd.pdf)
+and the [presentation](https://www.youtube.com/watch?v=y0cqKHsXkk4)
 
 ## some interesting code snippets
 
