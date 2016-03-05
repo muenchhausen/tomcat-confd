@@ -1,4 +1,8 @@
 [template]
+prefix = "tomcat"
+keys = [
+  "maxThreads"
+]
 src = "server.xml.tmpl"
 dest = "/usr/local/tomcat/conf/server.xml"
 
