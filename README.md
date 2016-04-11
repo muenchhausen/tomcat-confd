@@ -1,4 +1,4 @@
-# tomcat-conf
+# tomcat-confd
 This is a starting point for running and administrating multiple [Apache Tomcat](http://tomcat.apache.org/) using a central Configuration Repository - here [etcd](https://github.com/coreos/etcd).
 
 The main subject under test&sample is [confd](https://github.com/kelseyhightower/confd). It is a tiny  useful tool to move distributed local configuration files to a central configuration repositories. Various other configuration repositories like [etcd](https://github.com/coreos/etcd), [redis](http://redis.io), [consul](http://consul.io), [dynamodb](http://aws.amazon.com/dynamodb/), [zookeeper](https://zookeeper.apache.org) could be used instead of etcd if required.   
