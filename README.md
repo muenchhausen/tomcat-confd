@@ -5,6 +5,8 @@ The main subject under test&sample is [confd](https://github.com/kelseyhightower
 
 Here we use [Apache httpd](http://httpd.apache.org/) as a reverse proxy for load balancing. Why? It is since 1996 the most popular WebServer and it works fine :)
 
+Feel free to compare this confd sample with my [tomcat-consul](https://github.com/muenchhausen/tomcat-consul/) sample.
+
 ## what is this sample doing?
 Apache Tomcat uses config files e.g. ```tomcat-users.xml``` to define access rights to the manager webapp or ```server.xml``` to define connectors. Here the admin credentials shall be configured centrally, so we can change them within etcd.
 
